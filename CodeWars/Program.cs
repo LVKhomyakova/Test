@@ -17,24 +17,36 @@ namespace CodeWars
     {
         public static int MaxSequence(int[] arr)  //MaxSequence - подмассив с максимальной суммой
         {
+            int max = 0, res = 0, sum = 0;
+            foreach (var item in arr)
+            {
+                sum += item;
+                max = sum > max ? max : sum;
+                res = res > sum - max ? res : sum - max;
+            }
+            return res;
+            /*
             List<int> sequencesSum = new List<int>();
+            sequencesSum.Add(0);
             if (arr.Length == 0) return 0;
             if (arr.All(n => n <= 0)) return 0;
             else if(arr.All(n => n >= 0)) return arr.Sum();
             GetSequence(arr, 0, sequencesSum);
-            return sequencesSum.Max();
+            return sequencesSum.Max();*/
         }
-        static void GetSequence(int[] arr, int index,List<int> sequencesSum)
+       /* static void GetSequence(int[] arr, int index,List<int> sequencesSum)
         {
-            int sum = 0;
             int arrLength = arr.Length;
+            if (index == arrLength) return;
+            int sum = 0;
             for (int i = index; i < arrLength; i++)
             {
                 sum += arr[i];
-                sequencesSum.Add(sum);
-                GetSequence(arr, i+1, sequencesSum);
+                if(sum>sequencesSum[0])
+                    sequencesSum[0]=sum;
             }
-        }
+            GetSequence(arr, index+1, sequencesSum);
+        }*/
 
         public static string Likes(string[] str)   //who likes it? - кто отметил лайком
         {

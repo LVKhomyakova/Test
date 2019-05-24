@@ -21,7 +21,7 @@ namespace CodeWarsTests
         [Test]
         public void Test2()
         {
-            Assert.AreEqual(Enumerable.Range(-10000, 10000).Sum(), Kata.MaxSequence(Enumerable.Range(-10000,10000).ToArray()));
+            Assert.AreEqual(Enumerable.Range(-10, 100).Where(n=> n>=0).Sum(), Kata.MaxSequence(Enumerable.Range(-10,100).ToArray()));
         }
 
     }
